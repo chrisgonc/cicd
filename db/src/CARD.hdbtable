@@ -7,7 +7,5 @@ COLUMN TABLE "CARD"(
 	"CARD_INTERNATIONAL"	INTEGER 				COMMENT 'Card international - 0-No, 1-Yes',
 	"CARD_LIMIT"			SMALLINT				COMMENT 'Card limit',
 	"CARD_STATUS"			INTEGER 				COMMENT 'Card status - 0-Blocked, 1-Active',
-	"CARD_NEW_COLUMN"		INTEGER 				COMMENT 'Card new column',
-	"CARD_NEW_COLUMN2"		INTEGER 				COMMENT 'Card new column2',
 	PRIMARY KEY ("CARD_ID")
 ) COMMENT 'Cards' COLUMN LOADABLE UNLOAD PRIORITY 0;
