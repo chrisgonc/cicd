@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 
-name: cicd_app
+name: cd-openui5-sample-app
 resources:
   containers:
   - container: mta
