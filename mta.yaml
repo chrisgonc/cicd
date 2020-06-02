@@ -1,0 +1,22 @@
+ID: cicd
+_schema-version: '2.1'
+description: CI/CD test project
+version: 0.0.1
+
+modules:
+ - name: db
+   type: hdb
+   path: db
+   requires:
+    - name: hdi_db
+
+resources:
+ - name: hdi_db
+   parameters:
+      config:
+         schema: CICD
+         database_id: e33af58c-6da5-4dba-9772-0802f432d479
+      service-name: showcasehdi
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
