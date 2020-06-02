@@ -1,22 +1,33 @@
 ID: cicd
 _schema-version: '2.1'
 description: CI/CD test project
+provider: Christiano Hage
 version: 0.0.1
-
 modules:
- - name: db
-   type: hdb
-   path: db
-   requires:
-    - name: hdi_db
-
+  - name: db
+    type: hdb
+    path: db
+    requires:
+      - name: hdi_db
+        properties:
+          TARGET_CONTAINER: '~{hdi-container-name}'
+  - name: app
+    type: nodejs
+    path: app
+    provides:
+      - name: app_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: hdi_db
+      - name: db
 resources:
- - name: hdi_db
-   parameters:
+  - name: hdi_db
+    parameters:
       config:
-         schema: CICD
-         database_id: e33af58c-6da5-4dba-9772-0802f432d479
-      service-name: showcasehdi
-   properties:
-      hdi-container-name: ${service-name}
-   type: com.sap.xs.hdi-container
+        database_id: e33af58c-6da5-4dba-9772-0802f432d479
+        schema: CICD
+      service-name: cicd
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
